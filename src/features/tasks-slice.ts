@@ -1,11 +1,13 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
 
-interface Task {
+type Task = {
   id: string;
-  name: string;
-}
+  title: string;
+};
 
-export type TasksState = {
+type DraftTask = Pick<Task, "title">;
+
+type TasksState = {
   entities: Task[];
 };
 
@@ -13,12 +15,17 @@ const initialState: TasksState = {
   entities: [],
 };
 
+const createTask = (draftTask: DraftTask): Task => {
+  return { id: nanoid(), ...draftTask };
+};
+
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<Task>) => {
-      state.entities.push(action.payload);
+    addTask: (state, action: PayloadAction<DraftTask>) => {
+      const task = createTask(action.payload);
+      state.entities.push(task);
     },
     removeTask: (state, action) => {},
   },
