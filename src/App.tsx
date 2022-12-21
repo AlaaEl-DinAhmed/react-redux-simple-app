@@ -4,7 +4,7 @@ import { TasksList } from "./components/tasks-list/TasksList";
 
 function App() {
   return (
-    <div className="w-3/4 mx-auto">
+    <div className="mx-auto w-3/4 ">
       <CreateTask />
       <TasksList />
     </div>
