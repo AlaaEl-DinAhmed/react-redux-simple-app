@@ -7,15 +7,16 @@ export const CreateTask = () => {
   const dispatch = useDispatch();
 
   const addNewTask = (e: any) => {
+    const task = taskRef.current?.value.trim();
     e.preventDefault();
-    dispatch(addTask({ title: taskRef.current?.value || "" }));
     e.target.reset();
+    task ? dispatch(addTask({ title: task })) : alert("Please add a task.");
   };
 
   return (
     <form onSubmit={addNewTask}>
       <input
-        className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-purple-600"
+        className="rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-purple-600"
         type="text"
         placeholder="Add task"
         aria-label="Add task"
