@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
 
-type Task = {
+export type Task = {
   id: string;
   title: string;
 };
