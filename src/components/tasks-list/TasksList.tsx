@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useAppSelect } from "../../hooks";
 import { Task } from "../task/Task";
 
 export const TasksList = () => {
-  const tasks = useSelector((state: RootState) => state.tasks.entities);
+  const tasks = useAppSelect((state) => state.tasks.entities);
   return (
     <section className="mt-5">
       {tasks.map((task) => (
