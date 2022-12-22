@@ -3,9 +3,11 @@ import {
   PencilIcon,
   TrashIcon,
 } from "@heroicons/react/24/solid";
-import { Task as TaskItem } from "../../features/tasks-slice";
+import { useDispatch } from "react-redux";
+import { Task as TaskItem, removeTask } from "../../features/tasks-slice";
 
 export const Task = ({ task }: { task: TaskItem }) => {
+  const dispatch = useDispatch();
   return (
     <section className="border-b-2 py-3">
       <div className="flex justify-between">
@@ -15,7 +17,10 @@ export const Task = ({ task }: { task: TaskItem }) => {
         </div>
         <div className="flex">
           <PencilIcon className="icon mr-4" />
-          <TrashIcon className="icon" />
+          <TrashIcon
+            className="icon"
+            onClick={() => dispatch(removeTask(task.id))}
+          />
         </div>
       </div>
     </section>
