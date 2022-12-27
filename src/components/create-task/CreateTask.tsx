@@ -14,7 +14,7 @@ export const CreateTask = () => {
   };
 
   return (
-    <form onSubmit={addNewTask}>
+    <form onSubmit={addNewTask} className="text-start">
       <input
         className="rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-purple-600"
         type="text"
